@@ -1,9 +1,8 @@
 from sqlalchemy import text
-from src.database.db_connect import SessionDep
 from src.database.model import User_Token, Client_Event_Log
 
 
-def get_all_tokens_and_user(session: SessionDep):
+def get_all_tokens_and_user(session):
     """
     Функция, которая осуществляет получение списка токенов
     и привязанных пользователей
@@ -21,7 +20,7 @@ def get_all_tokens_and_user(session: SessionDep):
     return tokens
 
 
-def get_all_events(session: SessionDep):
+def get_all_events(session):
     """
     Функция, которая осуществляет получение
     журнала событий из базы данных
