@@ -3,18 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <title>Все пользователи и токены</title>
+    <link rel="stylesheet" href="/static/styles.css" />
 </head>
-<body>
+<body style="background-color: #FFF8DC">
 <h1>Список пользователей и USB-токенов</h1>
-<hr>
-<div>
+<div class="token_and_user_list">
     {% for obj in events%}
-    <div>
-        <p> ФИО пользователя: {{obj.Full_name}}</p>
-        <p>ID токена: {{obj.Token_ID}}</p>
-        <p>Логин пользователя: {{obj.User_name}}</p>
-        <p>Дата последнего события: {{obj.Date_Event}}</p>
-        <hr>
+    <div class="container_for_user_date">
+        <p> <span class = "attribute_user_style">ФИО пользователя </span>: {{obj.Full_name}}</p>
+        <p> <span class = "attribute_user_style">ID токена </span>: {{obj.Token_ID}}</p>
+        <p> <span class = "attribute_user_style">Логин пользователя </span>: {{obj.User_name}}</p>
+        {% if obj.Date_Event == "Последние два дня не использовался"%}
+        <p> <span class = "attribute_user_style">Дата последнего события </span>: <span class="id_not_used">{{obj.Date_Event}} </span></p>
+        {% else %}
+        <p> <span class = "attribute_user_style">Дата последнего события </span>: {{obj.Date_Event}}</p>
+        {% endif %}
     </div>
     {% endfor %}
 </div>
