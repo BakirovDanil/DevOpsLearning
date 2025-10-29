@@ -2,7 +2,7 @@ from fastapi import APIRouter, Request
 from fastapi.templating import Jinja2Templates
 
 get_forms_router = APIRouter()
-templates = Jinja2Templates(directory="templates/templates_forms")
+templates = Jinja2Templates(directory="templates/templates_forms_request")
 
 
 @get_forms_router.get("/search_user_and_token_form")
