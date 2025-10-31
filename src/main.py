@@ -1,7 +1,6 @@
 from fastapi import FastAPI
 import uvicorn
 from requests.GET_REQUEST import get_request
-from requests.GET_FORMS import get_forms_router
 from fastapi.staticfiles import StaticFiles
 
 
@@ -10,7 +9,6 @@ app = FastAPI(title = "Web for JMS",
 
 
 app.include_router(get_request)
-app.include_router(get_forms_router)
 app.mount("/static", StaticFiles(directory="templates"), 'static')
 
 
