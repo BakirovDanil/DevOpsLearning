@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Пользователи, которые не использовали токен</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body style ="background-color: #FFF8DC">
+
+<h1>Поиск пользователя</h1>
+<form method="get" action="/get_users_not_used_tokens">
+    <label for="user_name">ФИО пользователя:</label>
+    <input type="text" id="user_name" name="user_name" placeholder="Введите ФИО" required />
+    <button type="submit">Найти</button>
+</form>
+
+<h1>Список пользователей и USB-токенов</h1>
+<div>
+    {% for obj in users %}
+    <div class="container_for_user_date">
+        <p><span class="attribute_user_style">ФИО пользователя </span>: {{ obj.Full_name }}</p>
+        <p><span class="attribute_user_style">ID токена </span>: {{ obj.Token_ID }}</p>
+        <p><span class="attribute_user_style">Логин пользователя </span>: {{ obj.User_name }}</p>
+        {% if obj.Date_Event == "Последние два дня не использовался" %}
+        <p><span class="attribute_user_style">Дата последнего события </span>: <span class="id_not_used">{{ obj.Date_Event }}</span></p>
+        {% else %}
+        <p><span class="attribute_user_style">Дата последнего события </span>: {{ obj.Date_Event }}</p>
+        {% endif %}
+    </div>
+    {% endfor %}
+</div>
+</body>
+</html>
